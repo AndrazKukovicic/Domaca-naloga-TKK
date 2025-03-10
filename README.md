@@ -1,1 +1,1 @@
-# Doma-a-naloga-TKK
+# Domaca-naloga-TKK
