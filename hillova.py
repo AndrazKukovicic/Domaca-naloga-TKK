@@ -1,17 +1,16 @@
 
-import numpy as np
-print(np.__version__)
-
+#Prebere besedilo iz datoteke in odstrani presledke in nove vrstice, vrne pa string.
 def preberi_kriptogram(file_path):
     with open(file_path, 'r', encoding='utf-8') as dat:
         text = dat.read()
         text = text.replace('\n', '').replace(' ', '')
-        print(text)
         return text
-    
+
+#Funkcija, ki pretvori crke v številke, kjer je a=0, b=1, ..., z=25. Vrne list števil.
 def crke_v_stevilke (text):
     return [ord(crka) - ord('a') for crka in text]
 
+#Funkcija, ki pretvori številke v crke, kjer je 0=a, 1=b, ..., 25=z. Vrne list crk.
 def stevilke_v_crke (stevilke):
     list = []
     x = ord('a')
@@ -31,7 +30,7 @@ def desifriraj (kriptogram):
         for h2 in range(0,26):
             for h3 in range(0,26):
                 for h4 in range(0,26):
-                    if (h1*h4 - h2*h3) % 26 != 0:
+                    if (h1*h4 - h2*h3) % 26 != 0:   #Determinanta različna od 0, matrika mora biti obrnljiva.
                         resitev = []
                         for i in range(0, len(kriptogram), 2):
                             a = kriptogram[i]
@@ -41,14 +40,13 @@ def desifriraj (kriptogram):
                         
                         resitev = stevilke_v_crke(resitev)
                         resitev = ''.join(resitev)
-                        if resitev.count('the') > 0  and 'word' in resitev:
-                    #if 'and' in resitev and 'but' in resitev:
-                    #if 'the' and 'and' and 'to' and 'that' and 'have' and 'for' in stevilke_v_crke(resitev):
+                        if 'the' in resitev  and 'and' in resitev and 'crypto' in resitev: #Ugibam, da se bodo te besede pojavile v besedilu.
                             print(resitev)
                             print(h1, h2, h3, h4)
                             
-file_path = 'kriptogram.txt'
 
+#Zagon programa.
+file_path = 'kriptogram.txt'
 kriptogram_stevilke = crke_v_stevilke(preberi_kriptogram(file_path))
 desifriraj(kriptogram_stevilke)
 
