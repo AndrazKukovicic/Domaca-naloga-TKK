@@ -48,5 +48,5 @@ def desifriraj (kriptogram):
 #Zagon programa.
 file_path = 'kriptogram.txt'
 kriptogram_stevilke = crke_v_stevilke(preberi_kriptogram(file_path))
-desifriraj(kriptogram_stevilke)
+desifrirano_besedilo = desifriraj(kriptogram_stevilke)
 
