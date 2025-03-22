@@ -1,4 +1,4 @@
-
+import timeit
 #Prebere besedilo iz datoteke in odstrani presledke in nove vrstice, vrne pa string.
 def preberi_kriptogram(file_path):
     with open(file_path, 'r', encoding='utf-8') as dat:
@@ -50,3 +50,4 @@ file_path = 'kriptogram.txt'
 kriptogram_stevilke = crke_v_stevilke(preberi_kriptogram(file_path))
 desifrirano_besedilo = desifriraj(kriptogram_stevilke)
 
+timeit(desifrirano_besedilo)
